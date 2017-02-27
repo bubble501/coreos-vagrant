@@ -53,9 +53,9 @@ end
 
 Vagrant.configure("2") do |config|
   # always use Vagrants insecure key
-  config.proxy.http = "http://localhost:8123"
-  config.proxy.https = "http://localhost:8123"
-  config.proxy.no_proxy = "localhost,127.0.0.1"
+  # config.proxy.http = "http://172.16.66.180:8123"
+  # config.proxy.https = "http://172.16.66.180:8123"
+  # config.proxy.no_proxy = "localhost,127.0.0.1,172.16.66.180"
   config.ssh.insert_key = false
   # forward ssh agent to easily ssh into the different machines
   config.ssh.forward_agent = true
@@ -135,7 +135,7 @@ Vagrant.configure("2") do |config|
 
       ip = "172.17.8.#{i+100}"
       config.vm.network :private_network, ip: ip
-      config.vm.network :public_network, :bridge => "#{$bridge_if}", :mac => "#{$mac_address[i-1]}"
+      # config.vm.network :public_network, :bridge => "#{$bridge_if}", :mac => "#{$mac_address[i-1]}"
 
       # Uncomment below to enable NFS for sharing the host machine into the coreos-vagrant VM.
       #config.vm.synced_folder ".", "/home/core/share", id: "core", :nfs => true, :mount_options => ['nolock,vers=3,udp']
